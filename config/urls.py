@@ -1,20 +1,48 @@
-"""config URL Configuration
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
+from django.http.response import HttpResponse
 from django.urls import path
+
+def top_page_func(request):
+    print('Hello World!!!')
+    return HttpResponse('Hello World!!!')
+
+
+def animal_page_func(request, animal_name):
+    print(animal_name)
+    return HttpResponse('このページは' + animal_name + 'についてです！')
+
+
+def dog_page_func(request):
+    return HttpResponse('このページは犬についてです！犬は賢くていいですね！！')
+
+
+def cat_page_func(request):
+    return HttpResponse('このページは猫についてです！猫はかわいいですね！')
+
+
+def handle_number(request, number):
+    print(number)
+    return HttpResponse('あなたは'+str(number)+'番を入力しました！！！')
+
+
+def search_func(request):
+    search_word = request.GET['q']
+    print(search_word)
+    return HttpResponse('あなたは'+search_word+'を検索しました！！！')
+
+
+def square_func(request, number):
+    answer = number ** 2
+    return HttpResponse(str(number)+'の2乗は'+str(answer)+'です！！！')
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('hello', top_page_func),
+    path('animal/dog', dog_page_func),
+    path('anicaml/cat', cat_page_func),
+    path('animal/<str:animal_name>', animal_page_func),
+    path('num/<int:number>', handle_number),
+    path('search/', search_func),
+    path('square/<int:number>', square_func),
 ]
