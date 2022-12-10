@@ -3,5 +3,5 @@
 # アプリを１つ作成する(ここではtodoアプリ)
 `docker compose run --rm web python manage.py startapp blog`
 # 起動する
-`docker compose up`
+`docker compose down`
 # todo2
