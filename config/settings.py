@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-oa27mua0#!*msnz+x^cygx_-x-rz3k-y*0ftrt@)s83%i#s)lk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todo.apps.TodoConfig',
     'blog.apps.BlogConfig',
+    'youtube.apps.YoutubeConfig',
+    'chat.apps.ChatConfig',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +126,9 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+""" --------------追記----------------"""
+import os
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

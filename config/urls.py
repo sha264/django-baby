@@ -62,6 +62,9 @@ urlpatterns = [
     path('search/', search_func),
     path('n/<int:num>', handle_number),
     path('blog/', include('blog.urls')),
-    path('todo/', include('todo.urls'))
+    path('todo/', include('todo.urls')),
+    path('youtube/', include('youtube.urls')),
+    path('chat/', include('chat.urls')),
 ]
+
 
